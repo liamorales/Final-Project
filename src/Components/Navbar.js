@@ -33,7 +33,7 @@ function Navbar() {
     <IconContext.Provider value={{color: '#fff'}}>
     <div className='navbar'>
         <div className='navbar-container container'>
-           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+           <Link href='/home' className='navbar-logo' onClick={closeMobileMenu}>
                <GiBallerinaShoes className='navbar-icon'/>
                Dance! Your Heart 
            </Link>
@@ -42,7 +42,7 @@ function Navbar() {
            </div>
            <ul className={click ? 'nav-menu active' : 'nav-menu' }>
                <li className='nav-item'>
-                   <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                   <Link to='/home' className='nav-links' onClick={closeMobileMenu}>
                        Home
                    </Link>
                </li>

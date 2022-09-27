@@ -1,0 +1,37 @@
+[
+    {
+      "id": 1,
+      "fullName": "Vincent Nguyen",
+      "address": "305 Pennywise RD",
+      "phoneNumber": "333-962-7516",
+      "email": "v.nguyen.15@gmail.com"
+    },
+    {
+      "id": 2,
+      "fullName": "Max Jones",
+      "address": "304 Olive St",
+      "phoneNumber": "011-211-7516",
+      "email": "mj@email.com"
+    },
+    {
+      "id": 3,
+      "fullName": "Jackson Wang",
+      "address": "2254 Windsor St",
+      "phoneNumber": "788-962-7516",
+      "email": "jacksonwang.12@email.com"
+    },
+    {
+      "id": 4,
+      "fullName": "William Bush",
+      "address": "5478 Jefferson St",
+      "phoneNumber": "011-962-111",
+      "email": "wills.tomorrow@gmail.com"
+    },
+    {
+      "id": 5,
+      "fullName": "Morgan Rose",
+      "address": "2045 Washington Dr",
+      "phoneNumber": "3231-962-7516",
+      "email": "m.r.@hotmail.com"
+    }
+  ]

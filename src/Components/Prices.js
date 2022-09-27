@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button } from './Button';
 import './prices.css';
-import { FaFire } from 'react-icons/fa';
-import { BsXDiamondFill } from 'react-icons/bs';
-import { GiCrystalize } from 'react-icons/gi';
+import {GiLifeBar } from 'react-icons/gi';
+import { BsStarHalf } from 'react-icons/bs';
+import { RiHeartFill } from 'react-icons/ri';
 import { IconContext } from 'react-icons/lib';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ function Pricing() {
             <Link to='/sign-up' className='pricing__container-card'>
               <div className='pricing__container-cardInfo'>
                 <div className='icon'>
-                  <FaFire />
+                  <GiLifeBar />
                 </div>
                 <h3>Begginer</h3>
                 <h4>$45</h4>
@@ -35,7 +35,7 @@ function Pricing() {
             <Link to='/sign-up' className='pricing__container-card'>
               <div className='pricing__container-cardInfo'>
                 <div className='icon'>
-                  <BsXDiamondFill />
+                  <BsStarHalf />
                 </div>
                 <h3>Intermidiate</h3>
                 <h4>$50.0</h4>
@@ -53,7 +53,7 @@ function Pricing() {
             <Link to='/sign-up' className='pricing__container-card'>
               <div className='pricing__container-cardInfo'>
                 <div className='icon'>
-                  <GiCrystalize />
+                  <RiHeartFill />
                 </div>
                 <h3>Dance Lover</h3>
                 <h4>$55</h4>

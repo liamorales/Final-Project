@@ -1,10 +1,9 @@
 import React from 'react';
 import HomePage from '../HomePage';
-
 import {homeObjFour, homeObjOne, homeObjThree, homeObjTwo} from './Data';
 
 
-function home() {
+function Home() {
   return (
     <>
     <HomePage {...homeObjOne} />
@@ -15,4 +14,4 @@ function home() {
   )
 }
 
-export default home
+export default Home
