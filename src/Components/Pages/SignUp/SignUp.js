@@ -1,36 +1,30 @@
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React, {useState,} from 'react';
+
+import React, {useState,Fragment} from 'react';
 import {nanoid} from 'nanoid';
 import data from "./DancerData.json"
 import Edit from './Edit';
 import Read from './Read';
 import './Table.css';
+import Button from 'react-bootstrap/esm/Button';
+
+
+
 
 
 const SignUp =()=> {
   const [contacts, setContacts] = useState(data);
   const [addFormData, setAddFormData] = useState({
     fullName: "",
-    addressPartOne: "",
-    addressPartTwo: "",
-    city: "",
+    address: "",
+    phoneNumber: "",
     email: "",
-    zip: "",
-    state: "",
   });
 
   const [editFormData, setEditFormData] = useState({
     fullName: "",
-    addressPartOne: "",
-    addressPartTwo: "",
-    city: "",
+    address: "",
+    phoneNumber: "",
     email: "",
-    zip: "",
-    state: "",
   });
 
   const [editContactId, setEditContactId] = useState(null);
@@ -61,20 +55,22 @@ const SignUp =()=> {
 
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
+    
 
     const newContact = {
       id: nanoid(),
+      id: nanoid(),
       fullName: addFormData.fullName,
-      addressPartTwo: addFormData.addressPartTwo,
+      address: addFormData.address,
+      phoneNumber: addFormData.phoneNumber,
       email: addFormData.email,
-      addressPartOne: addFormData.addressPartOne,
-      city: addFormData.city,
-      zip: addFormData.zip,
-      state: addFormData.state,
     };
 
     const newContacts = [...contacts, newContact];
     setContacts(newContacts);
+    console.log('in handle add form submit', addFormData , contacts);
+    console.log('testing');
+
   };
 
   const handleEditFormSubmit = (event) => {
@@ -83,12 +79,9 @@ const SignUp =()=> {
     const editedContact = {
       id: editContactId,
       fullName: editFormData.fullName,
-      addressPartTwo: editFormData.addressPartTwo,
+      address: editFormData.address,
+      phoneNumber: editFormData.phoneNumber,
       email: editFormData.email,
-      addressPartOne: editFormData.addressPartOne,
-      city: editFormData.city,
-      zip: editFormData.zip,
-      state: editFormData.state,
     };
 
     const newContacts = [...contacts];
@@ -107,12 +100,9 @@ const SignUp =()=> {
 
     const formValues = {
       fullName: contact.fullName,
-      addressPartTwo: contact.addressPartTwo,
+      address: contact.address,
+      phoneNumber: contact.phoneNumber,
       email: contact.email,
-      addressPartOne: contact.addressPartOne,
-      city: contact.city,
-      zip: contact.zip,
-      state: contact.state,
     };
 
     setEditFormData(formValues);
@@ -129,94 +119,76 @@ const SignUp =()=> {
 
     newContacts.splice(index, 1);
 
-    setContacts(newContacts);
+    setContacts(newContacts); 
   };
   return (
-    <>
-    <Form>
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Enter email"
-            onChange={handleAddFormChange}
-            name="email" />
-        </Form.Group>
+    <div className="app-container">
+    <form onSubmit={handleEditFormSubmit}>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {contacts.map((contact) => (
+            <Fragment>
+              {editContactId === contact.id ? (
+                <Edit
+                  editFormData={editFormData}
+                  handleEditFormChange={handleEditFormChange}
+                  handleCancelClick={handleCancelClick}
+                />
+              ) : (
+                <Read
+                  contact={contact}
+                  handleEditClick={handleEditClick}
+                  handleDeleteClick={handleDeleteClick}
+                />
+              )}
+            </Fragment>
+          ))}
+        </tbody>
+      </table>
+    </form>
 
-        <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>Full Name</Form.Label>
-          <Form.Control type="text" placeholder="Your Name"
-            onChange={handleAddFormChange}
-            name="fullName" />
-        </Form.Group>
-      </Row>
-
-      <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St"
-          onChange={handleAddFormChange}
-          name="addressPartOne" />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formGridAddress2">
-        <Form.Label>Address 2</Form.Label>
-        <Form.Control placeholder="Apartment, studio, or floor"
-          name="addressPartTwo"
-          type="text"
-          onChange={handleAddFormChange} />
-      </Form.Group>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>City</Form.Label>
-          <Form.Control onChange={handleAddFormChange} name="city" />
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>State</Form.Label>
-          <Form.Select onChange={handleAddFormChange} name="state" defaultValue="Choose...">
-            <option>Choose...</option>
-            <option>...</option>
-          </Form.Select>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>Zip</Form.Label>
-          <Form.Control onChange={handleAddFormChange} name="zip" />
-        </Form.Group>
-      </Row>
-      <Button variant="primary" type="submit" size="sm" onSubmit={handleEditFormSubmit}>
-        Submit
-      </Button>
-    </Form>
-    <div>
-        <table striped hover variant="dark" onSubmit={handleEditFormSubmit}>
-          <thead>
-            <tr>
-              <th>WELCOME!</th>
-            </tr>
-          </thead>
-          <tbody hover >
-            {contacts.map((contact) => (
-              <div>
-                {editContactId === contact.id ? (
-                  <Edit
-                    editFormData={editFormData}
-                    handleEditFormChange={handleEditFormChange}
-                    handleCancelClick={handleCancelClick}
-                  />
-                ) : (
-                  <Read
-                    contact={contact}
-                    handleEditClick={handleEditClick}
-                    handleDeleteClick={handleDeleteClick}
-                  />
-                )}
-             </div>
-            ))}
-          </tbody>
-        </table>
-    </div>
-    </>
+    <h2>WELCOME NEW DANCER! </h2>
+    <form onSubmit={handleAddFormSubmit}>
+      <input
+        type="text"
+        name="fullName"
+        required="required"
+        placeholder="Enter a name..."
+        onChange={handleAddFormChange}
+      />
+      <input
+        type="text"
+        name="address"
+        required="required"
+        placeholder="Enter an addres..."
+        onChange={handleAddFormChange}
+      />
+      <input
+        type="text"
+        name="phoneNumber"
+        required="required"
+        placeholder="Enter a phone number..."
+        onChange={handleAddFormChange}
+      />
+      <input
+        type="email"
+        name="email"
+        required="required"
+        placeholder="Enter an email..."
+        onChange={handleAddFormChange}
+      />
+      <Button variant="secondary" type="submit">Add</Button>
+    </form>
+  </div>
   
   );
 

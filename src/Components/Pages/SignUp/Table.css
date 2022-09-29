@@ -1,8 +1,69 @@
-table, th, td {
-    border: 1px solid;
-    width: 50%;
-    text-align: left;
-    padding: 15px;
-    
-  }
-tr:hoover {background-color:blueviolet;}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1rem;
+  color:whitesmoke;
+  padding: 160 px 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  visibility: inherit ; 
+}
+
+th,
+td {
+  border: 1px solid whitesmoke;
+  text-align: left;
+  padding: 8px;
+  font-size: 32px;
+}
+
+th {
+  background-color: #1c2237;
+}
+
+td {
+  background-color: #1c2237;
+}
+
+form {
+  display: flex;
+  gap: 5px;
+}
+
+form td:last-child {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+form * {
+  font-size: 25px;
+}
+:root {
+  --primary: #fff;
+}
+.row {
+  display:flex;
+  margin-right: -15px;
+  margin-bottom: -15px;
+  margin-left: -15px;
+  flex-wrap: wrap;
+  align-content: stretch;
+}
+
+.col {
+  margin-bottom: 15 px;
+  padding-right: 15 px;
+  padding-left: 15px;
+  flex: 1;
+  max-width: 50%;
+  flex-basis: 50%;
+}
+.h2 {
+  text-align: center;
+  color:black;
+}
+
